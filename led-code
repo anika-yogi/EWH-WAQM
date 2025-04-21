@@ -1,0 +1,61 @@
+
+// Define LED pins
+const int redLED = 9;
+const int yellowLED = 10;
+const int greenLED = 11;
+
+
+
+
+// Simulated threshold value (this could be replaced by a sensor reading)
+int threshold = 0;
+
+
+
+
+void setup() {
+ pinMode(redLED, OUTPUT);
+  pinMode(yellowLED, OUTPUT);
+  pinMode(greenLED, OUTPUT);
+}
+
+
+
+
+void loop() {
+   if (threshold < 30) {  
+    // Blink green LED (low range)
+    digitalWrite(greenLED, HIGH);
+    delay(1000);
+    digitalWrite(greenLED, LOW);
+    delay(1000);
+  }
+   else if (threshold >= 30 && threshold < 70) {  
+    // Blink yellow LED (mid range)
+    digitalWrite(yellowLED, HIGH);
+    delay(700);
+    digitalWrite(yellowLED, LOW);
+    delay(700);
+  }
+   else {  
+    // Blink red LED (high range)
+    digitalWrite(redLED, HIGH);
+    delay(500);
+    digitalWrite(redLED, LOW);
+    delay(500);
+  }
+
+
+
+
+  // Simulate threshold change
+  threshold += 10;
+  if (threshold > 100) {
+    threshold = 0;
+  }
+
+
+
+
+  delay(500);
+}
